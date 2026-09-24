@@ -1,8 +1,16 @@
 <div align="center">
 
+
+
+
+<div align="center">
 <img width="207" height="98" alt="image" src="https://github.com/user-attachments/assets/a25bb0ec-6ae2-4bc6-a6af-9ee5c5eb9980" />
+&nbsp;
+
+</div>
 
 **Workflow automation for freelancers and micro-agencies, with every workflow kept as a YAML file you own.**
+
 
 FlowForge turns the chores every small agency repeats into versioned YAML workflows: chasing unpaid invoices, onboarding clients, following up on orders, asking for reviews, reminding about renewals. An engine runs them on a schedule, from a webhook or on demand, pauses for a human where one is needed, and keeps a hash-chained audit trail of everything it did.
 
@@ -19,11 +27,9 @@ FlowForge turns the chores every small agency repeats into versioned YAML workfl
 
 </div>
 
----
+designed and build by:
 
-## Builder: 
-
-<a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="220px" alt="Sneferu"></a>
+<a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="180px" alt="Sneferu"></a>
 
 ## What it does
 
@@ -135,13 +141,13 @@ FlowForge Open was built by **Software On Demand (SOD)**, Sneferu's product line
 
 This repository is that release's source, and every source file in it matches the release manifest's SHA-256 hash. There are only two differences. The release's original README is now [`QUICKSTART.md`](QUICKSTART.md), so this page can sit on top. And build leftovers the release carried (a test-results file and five TypeScript build caches) are not included.
 
-## Built by Sneferu
-
-These are the SOD screens that make products like this one.
+## Built by Sneferu Software on Demand
 
 <div align="center">
-<img src="docs/screenshots/sneferu-sod-preview.webp" alt="Sneferu Software On Demand, Preview & Test for the project 'FlowForge Open — Product Specification': the FlowForge Open API explorer (OpenAPI 3.1, Apache-2.0) served from the project's own preview host" width="860">
-<br><sub>FlowForge itself in SOD's Preview & Test: the working application on its own host, serving its own API explorer, before it was accepted.</sub>
+<img src="docs/screenshots/sneferu-sod-build.webp" alt="SOD's Build form: the product request, how hard Sneferu argues the plan, the starting point, the planning team and the coders, with the build plan and 'Create project and review exact quote'" width="860">
+&nbsp;
+
+<sub>Left: one form, before any money moves. You describe the product pick your model cast and let it rip.</sub>
 </div>
 
 <div align="center">
@@ -150,16 +156,12 @@ These are the SOD screens that make products like this one.
 </div>
 
 <div align="center">
-<img src="docs/screenshots/sneferu-sod-build.webp" alt="SOD's Build form: the product request, how hard Sneferu argues the plan, the starting point, the planning team and the coders, with the build plan and 'Create project and review exact quote'" width="430">
-&nbsp;
-<img src="docs/screenshots/sneferu-sod-spec.webp" alt="An approved SOD specification: revision v1, run id, SHA-256 and status Approved, with its own table of contents" width="430">
-<br><sub>Left: one form, before any money moves. You describe the product, choose how hard the models argue the plan and pick the coders, and the quote and spending ceiling come first. Right: an approved specification, versioned and hashed. Nothing is coded until you've read it and said yes.</sub>
+<img src="docs/screenshots/sneferu-sod-preview.webp" alt="Sneferu Software On Demand, Preview & Test for the project 'FlowForge Open — Product Specification': the FlowForge Open API explorer (OpenAPI 3.1, Apache-2.0) served from the project's own preview host" width="860">
+<br><sub>FlowForge itself in SOD's Preview & Test: the working application on its own host, serving its own API explorer, before it was accepted.</sub>
 </div>
-
 
 <div align="center">
 
----
 
 builder:
 
