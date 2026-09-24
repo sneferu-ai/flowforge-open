@@ -1,6 +1,6 @@
 <div align="center">
 
-# FlowForge Open
+<img width="207" height="98" alt="image" src="https://github.com/user-attachments/assets/a25bb0ec-6ae2-4bc6-a6af-9ee5c5eb9980" />
 
 **Workflow automation for freelancers and micro-agencies, with every workflow kept as a YAML file you own.**
 
@@ -21,7 +21,9 @@ FlowForge turns the chores every small agency repeats into versioned YAML workfl
 
 ---
 
-**FlowForge Open is the first showcase product of [Sneferu's Software On Demand](https://sneferu.ai).** A written request went in; this working product came back, specified, built, tested and delivered by Sneferu. See [How it was made](#how-it-was-made).
+## Builder: 
+
+<a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="220px" alt="Sneferu"></a>
 
 ## What it does
 
@@ -43,7 +45,16 @@ Five templates come ready to run: **Invoice Chaser**, **Client Onboarding**, **O
 <br><sub>Left: an invoice 45 days overdue stops the run until a person approves the escalation email. Right: every action lands in an append-only, SHA-256 hash-chained audit log that verifies itself.</sub>
 </div>
 
-It also covers the hosted-service basics: workspaces with roles, an encrypted credential vault, a per-workspace allowlist of hosts a workflow may call, API tokens, OIDC single sign-on, plan limits and metered runs, and an OpenAPI 3.1 document at `/openapi.json`. The `forge` command-line tool validates and runs manifests locally, and pushes and pulls them to a server.
+It also covers the hosted-service basics: 
+
+- workspaces with roles,
+- an encrypted credential vault,
+- a per-workspace allowlist of hosts a workflow may call,
+- API tokens,
+- OIDC single sign-on,
+- plan limits and metered runs,
+- and an OpenAPI 3.1 document at `/openapi.json`.
+- The `forge` command-line tool validates and runs manifests locally, and pushes and pulls them to a server.
 
 ## Run it
 
@@ -145,14 +156,14 @@ These are the SOD screens that make products like this one.
 <br><sub>Left: one form, before any money moves. You describe the product, choose how hard the models argue the plan and pick the coders, and the quote and spending ceiling come first. Right: an approved specification, versioned and hashed. Nothing is coded until you've read it and said yes.</sub>
 </div>
 
-<p align="center"><b><a href="https://sneferu.ai">See Software On Demand at sneferu.ai →</a></b></p>
 
 <div align="center">
 
 ---
 
-**Built by [Sneferu](https://sneferu.ai)**
+builder:
 
-<sub>README by Claude (Anthropic). App screenshots are from a fresh demo workspace running this source. SOD screenshots are from sneferu.ai.</sub>
+<a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="220px" alt="Sneferu"></a>
+
 
 </div>
