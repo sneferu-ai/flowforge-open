@@ -12,7 +12,7 @@
 **Workflow automation for freelancers and micro-agencies, with every workflow kept as a YAML file you own.**
 
 
-FlowForge turns the chores every small agency repeats into versioned YAML workflows: chasing unpaid invoices, onboarding clients, following up on orders, asking for reviews, reminding about renewals. An engine runs them on a schedule, from a webhook or on demand, pauses for a human where one is needed, and keeps a hash-chained audit trail of everything it did.
+FlowForge turns the chores every small agency repeats into versioned YAML workflows: chasing unpaid invoices, onboarding clients, following up on orders, asking for reviews, reminding about renewals. An engine runs them on a schedule, from a webhook or on demand, pauses for a human where one is needed, and keeps a hash-chained audit trail of everything it did. read the [product spec](flowforge-open-product-specification-specification.md)
 
 ![Node 22](https://img.shields.io/badge/node-22-339933?logo=nodedotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Fastify%20·%20React%2018-3178C6?logo=typescript&logoColor=white)
@@ -89,7 +89,14 @@ node apps/server/dist/index.js      # migrates, seeds the demo workspace, serves
 
 Sign in with the demo account shown on the login page (`demo@acme.test` / `demo-pass-2026`). The browser journeys run with `npm run test:e2e`. They start their own server when `FF_DATABASE_URL` and `FF_REDIS_URL` are set, and need Playwright's Chromium (`npx playwright install chromium`).
 
-For the full walkthrough, see the product's own [quick start](QUICKSTART.md), written during the build. The [user guide](docs/USER_GUIDE.md), [architecture](docs/ARCHITECTURE.md), [API and CLI reference](docs/API.md), [UI guide](docs/UI.md) and [operations guide](docs/OPERATIONS.md) are in `docs/`.
+For the full walkthrough, see the product's own 
+- [Product Spec](flowforge-open-product-specification-specification.md)
+- [quick start](QUICKSTART.md)
+- [user guide](docs/USER_GUIDE.md)
+- [architecture](docs/ARCHITECTURE.md)
+- [API and CLI reference](docs/API.md)
+- [UI guide](docs/UI.md) and
+- [operations guide](docs/OPERATIONS.md) are in `docs/`.
 
 ## What's in the box
 
