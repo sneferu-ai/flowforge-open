@@ -1,0 +1,68 @@
+{
+  "excluded_files": [
+    {
+      "path": ".claude/",
+      "reason": "not product source (generated or runtime directory)"
+    },
+    {
+      "path": ".git/",
+      "reason": "not product source (generated or runtime directory)"
+    },
+    {
+      "path": ".sneferu_coder/",
+      "reason": "not product source (generated or runtime directory)"
+    },
+    {
+      "path": ".orchestrator.json",
+      "reason": "not product source (orchestrator bookkeeping)"
+    },
+    {
+      "path": "IMPLEMENTATION_NOTES.md",
+      "reason": "not product source (orchestrator bookkeeping)"
+    },
+    {
+      "path": "spec.md",
+      "reason": "not product source (orchestrator bookkeeping)"
+    },
+    {
+      "path": "apps/cli/dist/",
+      "reason": "cache, dependency, VCS, downloaded-data, or internal-state directory"
+    },
+    {
+      "path": "apps/server/dist/",
+      "reason": "cache, dependency, VCS, downloaded-data, or internal-state directory"
+    },
+    {
+      "path": "apps/web/dist/",
+      "reason": "cache, dependency, VCS, downloaded-data, or internal-state directory"
+    },
+    {
+      "path": "apps/worker/dist/",
+      "reason": "cache, dependency, VCS, downloaded-data, or internal-state directory"
+    },
+    {
+      "path": "packages/engine/dist/",
+      "reason": "cache, dependency, VCS, downloaded-data, or internal-state directory"
+    },
+    {
+      "path": "packages/shared/dist/",
+      "reason": "cache, dependency, VCS, downloaded-data, or internal-state directory"
+    }
+  ],
+  "limitations": [
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-003-90c5ccd8b137 (Demo login via the on-page credentials panel (the demo account is env-driven: `FF_DEMO_EMAIL` default `demo@acme.test`, ): error: adjudicated by two lineages as the test's own assumption, not a product finding \u2014 correct the test: 2 distinct lineage(s) judged: deepseek=denied, zhipu=denied | observed: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account E",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-004-e8791c57d7cd (Dashboard shows the empty-state when the demo workspace has no runs yet.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-005-bdf5acf1b1f9 (Command palette opens and filters on keyboard input.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-006-2bc819b14de0 (Templates page lists all five seeded templates (invoice-chaser, client-onboarding, order-follow-up, review-request, rene): error: adjudicated by two lineages as the test's own assumption, not a product finding \u2014 correct the test: 2 distinct lineage(s) judged: deepseek=denied, zhipu=denied | observed: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account E",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-007-bc057fd91de3 (Create a workflow from the invoice-chaser template.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-008-c3c98be7c11d (New-workflow editor offers the template picker.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-009-4af9d2717267 (Create a workflow from scratch in the editor.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-010-9acc564d6b62 (Trigger the workflow manually and view the resulting run.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-011-008d5d820971 (The default invoice-chaser run succeeds without an approval step.): error: adjudicated by two lineages as the test's own assumption, not a product finding \u2014 correct the test: 2 distinct lineage(s) judged: deepseek=denied, zhipu=denied | observed: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Pas",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-012-11790f069522 (Escalation: edit \u2192 draft \u2192 promote \u2192 run pauses \u2192 approve \u2192 run succeeds.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-014-f998877b0a10 (An API token minted via session+CSRF authenticates a Bearer request.): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-019-4654ce2ececb (**password reconciliation** \u2014 every seeded boot re-asserts the demo password via verify-then-update (argon2 verify; rewr): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register",
+    "Launch-proof observation, accepted with this release after the customer verified the preview (the proof's primary journey passed; this item did not): TP-022-dbf89548a586 (`npx playwright test --reporter=list` \u2014 the browser journeys above): fail: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-testid=\\\"dashboard\\\"], [data-testid=\\\"dashboard-empty-state\\\"]\") to be visible\n \u2014 the page was at http://10.203.24.254:49215/login and showed: FlowForge Open Demo account Email: demo@acme.test Password: demo-pass-2026 Email Password Sign in No account? Register"
+  ],
+  "schema": "sneferu.sod.limitations/v1"
+}

@@ -1,0 +1,32 @@
+api_version: flowforge/v1
+name: review-request
+summary: Weekly sweep of recently-closed clients; ask for a review.
+
+triggers:
+  - type: schedule
+    cron: "0 10 * * 1"
+    timezone: UTC
+
+steps:
+  - id: fetch_clients
+    type: http
+    with:
+      method: GET
+      url: "{{ env.FF_APP_URL }}/api/v1/demo/clients"
+  - id: ask_for_review
+    type: for_each
+    with:
+      over: "steps.fetch_clients.output.body.clients"
+    steps:
+      - id: send_request
+        type: notify
+        with:
+          channel: email
+          to: "{{ loop.item.email }}"
+          subject: "How was your project with us?"
+          body: "Hi {{ loop.item.name }}, thanks for working with us on {{ loop.item.last_project }}. Would you mind leaving a quick review?"
+  - id: log_count
+    type: log
+    with:
+      level: info
+      message: "Sent {{ len(steps.ask_for_review.output.results) }} review requests"

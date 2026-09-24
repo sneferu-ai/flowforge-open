@@ -1,0 +1,30 @@
+{
+  "name": "flowforge-open",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open-source workflow automation for freelancers and micro-agencies",
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "tsc -b --force && npm run build -w @flowforge/web && node scripts/copy-static-assets.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npx playwright test --reporter=list",
+    "lint": "for p in packages/shared packages/engine apps/server apps/cli apps/worker apps/web; do tsc --noEmit -p $p/tsconfig.json || exit 1; done",
+    "clean": "rm -rf dist apps/*/dist packages/*/dist apps/web/dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0",
+    "vite": "^6.0.0",
+    "@playwright/test": "1.62.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

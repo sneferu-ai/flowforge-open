@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "files": [],
+  "references": [
+    { "path": "./packages/shared/tsconfig.json" },
+    { "path": "./packages/engine/tsconfig.json" },
+    { "path": "./apps/server/tsconfig.json" },
+    { "path": "./apps/cli/tsconfig.json" },
+    { "path": "./apps/worker/tsconfig.json" }
+  ]
+}

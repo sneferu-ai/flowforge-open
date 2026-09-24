@@ -1,0 +1,44 @@
+api_version: flowforge/v1
+name: client-onboarding
+summary: "Webhook-triggered onboarding sequence: fetch client, welcome email, wait, follow-up"
+
+triggers:
+  - type: webhook
+    path: client-onboarding
+    auth_mode: none
+    sync: true
+
+steps:
+  - id: fetch_clients
+    type: http
+    with:
+      method: GET
+      url: "{{ env.FF_APP_URL }}/api/v1/demo/clients"
+  - id: send_welcome
+    type: notify
+    with:
+      channel: email
+      to: "{{ steps.fetch_clients.output.body.clients[0].email }}"
+      subject: "Welcome aboard, {{ steps.fetch_clients.output.body.clients[0].name }}!"
+      body: "Hi {{ steps.fetch_clients.output.body.clients[0].name }}, we're excited to work with you on your next project."
+  - id: wait_2s
+    type: delay
+    with:
+      duration: "2s"
+  - id: send_followup
+    type: notify
+    with:
+      channel: email
+      to: "{{ steps.fetch_clients.output.body.clients[0].email }}"
+      subject: "Getting started checklist"
+      body: "Here's a quick checklist to get us started on {{ steps.fetch_clients.output.body.clients[0].last_project }}."
+  - id: reply_webhook
+    type: reply
+    with:
+      status: 200
+      body: '{"status":"onboarding_started","client":"{{ steps.fetch_clients.output.body.clients[0].name }}"}'
+  - id: done
+    type: log
+    with:
+      level: info
+      message: "Onboarding sequence started for {{ steps.fetch_clients.output.body.clients[0].name }}"

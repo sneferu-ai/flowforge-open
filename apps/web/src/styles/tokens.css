@@ -1,0 +1,273 @@
+/* ==========================================================================
+   FlowForge Open — Closed Token Layer
+   The ONLY place where raw hex values, px sizes, and durations live.
+   Every component must reference these via var(--name).
+   ========================================================================== */
+
+:root {
+  /* ---- Color: backgrounds ---- */
+  --bg-base: #0D0D11;
+  --bg-elevated: #16161E;
+  --bg-overlay: #1E1E28;
+
+  /* ---- Color: foregrounds ---- */
+  --fg-primary: #E6E6EC;
+  --fg-secondary: #9898A4;
+  --fg-tertiary: #868692;
+  --fg-disabled: #3E3E48;
+
+  /* ---- Color: accent (the forge — one warm amber) ---- */
+  --accent: #E09132;
+  --accent-hover: #F0A040;
+  --accent-pressed: #C07E28;
+  --accent-contrast: #0D0D11;
+  --accent-subtle: rgba(224, 145, 50, 0.10);
+  --accent-border: rgba(224, 145, 50, 0.30);
+
+  /* ---- Color: borders ---- */
+  --border-subtle: #1E1E28;
+  --border-default: #2A2A36;
+  --border-strong: #3A3A48;
+  --border-focus: #E09132;
+
+  /* ---- Overlay / interaction tints ---- */
+  --overlay-backdrop: rgba(13, 13, 17, 0.7);
+  --row-hover: rgba(22, 22, 30, 0.5);
+
+  /* ---- Color: status ---- */
+  --status-running: #4A9EE8;
+  --status-running-subtle: rgba(74, 158, 232, 0.10);
+  --status-running-border: rgba(74, 158, 232, 0.30);
+
+  --status-paused: #E09132;
+  --status-paused-subtle: rgba(224, 145, 50, 0.10);
+  --status-paused-border: rgba(224, 145, 50, 0.30);
+
+  --status-halted: #E84A4A;
+  --status-halted-subtle: rgba(232, 74, 74, 0.10);
+  --status-halted-border: rgba(232, 74, 74, 0.30);
+
+  --status-complete: #3DBA6A;
+  --status-complete-subtle: rgba(61, 186, 106, 0.10);
+  --status-complete-border: rgba(61, 186, 106, 0.30);
+
+  --status-failed: #E84A4A;
+  --status-failed-subtle: rgba(232, 74, 74, 0.10);
+  --status-failed-border: rgba(232, 74, 74, 0.30);
+
+  --status-orphan: #9898A4;
+  --status-orphan-subtle: rgba(152, 152, 164, 0.10);
+  --status-orphan-border: rgba(152, 152, 164, 0.30);
+
+  /* ---- Typography: families ---- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace;
+
+  /* ---- Typography: sizes ---- */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-code: 13px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+  --text-3xl: 28px;
+
+  /* ---- Typography: weights ---- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Typography: line heights ---- */
+  --line-tight: 1.2;
+  --line-snug: 1.35;
+  --line-normal: 1.5;
+  --line-relaxed: 1.65;
+
+  /* ---- Spacing: 4pt scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ---- Hairlines & borders ---- */
+  --space-hairline: 2px;
+  --border-width: 1px;
+  --focus-ring-w: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-offset-in: -1px;
+  --hover-lift: 1px;
+  --enter-offset: 8px;
+  --backdrop-blur: 8px;
+  --btn-height: 36px;
+  --toast-max-w: 380px;
+  --logo-auth: 32px;
+  --logo-landing: 48px;
+
+  /* ---- Shape: radii ---- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 9999px;
+  --radius-full: 50%;
+
+  /* ---- Elevation: one shadow scale ---- */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.20);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-3: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-4: 0 16px 48px rgba(0, 0, 0, 0.45);
+
+  /* ---- Motion ---- */
+  --dur-instant: 50ms;
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 350ms;
+  --dur-pulse: 1.5s;
+  --stagger-step: 40ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---- Runtime pacing (transient hints, redirects, polling backstops) ---- */
+  --dur-copied-hint: 1500ms;
+  --dur-redirect: 1200ms;
+  --dur-poll-run: 1500ms;
+  --dur-poll-notifications: 30000ms;
+
+  /* ---- Z-index ---- */
+  --z-base: 0;
+  --z-sidebar: 10;
+  --z-sticky: 100;
+  --z-dropdown: 200;
+  --z-overlay: 300;
+  --z-modal-bg: 400;
+  --z-modal: 410;
+  --z-cmd: 500;
+  --z-toast: 600;
+
+  /* ---- Layout dimensions (structural — not spacing-scale multiples) ---- */
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 56px;
+  --topbar-height: 52px;
+  --content-max: 1024px;
+  --content-narrow: 420px;
+  --palette-max: 448px;
+
+  /* ---- Grid column widths ---- */
+  --col-side: 320px;
+  --col-versions-list: 220px;
+  --col-cards-min: 140px;
+  --col-plan-min: 220px;
+  --col-gutter: 40px;
+  --flow-node-w: 220px;
+
+  /* ---- Icon sizes (one scale, consistent stroke weight) ---- */
+  --icon-xs: 12px;
+  --icon-sm: 14px;
+  --icon-md: 16px;
+  --icon-lg: 20px;
+  --icon-xl: 24px;
+
+  /* ---- Dense button height (for table rows, compact toolbars) ---- */
+  --btn-sm-height: 32px;
+  --btn-touch-min: 44px;
+
+  /* ---- Structural detail dimensions ---- */
+  --status-dot: 6px;
+  --progress-bar-h: 6px;
+  --progress-bar-plan-h: 8px;
+  --divider-h: 28px;
+  --skeleton-row-h: 24px;
+  --skeleton-card-h: 56px;
+  --skeleton-tile-h: 280px;
+  --skeleton-block-h: 320px;
+  --skeleton-section-sm: 120px;
+  --skeleton-section-md: 180px;
+  --skeleton-section-lg: 200px;
+  --skeleton-input-h: 48px;
+  --skeleton-field-h: 40px;
+  --empty-icon: 40px;
+  --empty-max: 360px;
+  --hero-max: 560px;
+  --header-nav-h: 56px;
+
+  /* ---- Wider content containers ---- */
+  --content-max-wide: 1152px;
+  --content-max-audit: 1200px;
+
+  /* ---- Step wizard details ---- */
+  --step-check: 10px;
+  --step-connector-w: 24px;
+
+  /* ---- Editor dimensions ---- */
+  --yaml-editor-h: 35rem;
+  --yaml-editor-new-h: 32.5rem;
+  --scroll-list-max-h: 560px;
+
+  /* ---- Table column widths ---- */
+  --col-seq: 64px;
+  --col-when: 180px;
+  --col-actor: 180px;
+  --col-action: 130px;
+  --col-event-max: 280px;
+  --col-detail-max: 420px;
+
+  /* ---- Responsive breakpoints & table minimums ----
+     NOTE: CSS custom properties are NOT resolvable inside @media conditions
+     (platform limitation), so media queries reference the literal 768px.
+     This comment is the single place that number is documented. */
+  --bp-mobile: 768px;
+}
+
+/* ---- Light theme (designed alongside dark, for future use) ---- */
+[data-theme="light"] {
+  --bg-base: #FAFAFC;
+  --bg-elevated: #FFFFFF;
+  --bg-overlay: #FFFFFF;
+
+  --fg-primary: #1A1A22;
+  --fg-secondary: #5A5A66;
+  --fg-tertiary: #6A6A76;
+  --fg-disabled: #C0C0C8;
+
+  --accent: #C07828;
+  --accent-hover: #D08830;
+  --accent-pressed: #A06820;
+  --accent-contrast: #FFFFFF;
+  --accent-subtle: rgba(192, 120, 40, 0.08);
+  --accent-border: rgba(192, 120, 40, 0.25);
+
+  --border-subtle: #EAEAEF;
+  --border-default: #D8D8E0;
+  --border-strong: #C0C0CC;
+  --border-focus: #C07828;
+
+  --overlay-backdrop: rgba(13, 13, 17, 0.4);
+  --row-hover: rgba(26, 26, 34, 0.04);
+
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-4: 0 16px 48px rgba(0, 0, 0, 0.14);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

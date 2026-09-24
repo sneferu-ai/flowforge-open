@@ -1,0 +1,77 @@
+{
+  "runtime_test_command": "node apps/server/dist/index.js --port {port}",
+  "runtime_test_mode": "playwright",
+  "health_endpoint": "/readyz",
+  "browser_smoke_plan": "test_plan.md",
+  "requirements_file": "package.json",
+  "system_deps": ["python3"],
+  "env_var_names": [
+    "FF_DATABASE_URL",
+    "FF_REDIS_URL",
+    "FF_PORT",
+    "PORT",
+    "FF_VAULT_KEY",
+    "FF_VAULT_KEY_OLD",
+    "FF_ENCRYPTION_KEY",
+    "FF_VAULT_KEY_VERSION",
+    "FF_SESSION_SECRET",
+    "FF_APP_URL",
+    "APP_BASE_URL",
+    "SOD_DATA_DIR",
+    "FF_SEED_DEMO",
+    "FF_DEMO_EMAIL",
+    "FF_DEMO_SEED",
+    "FF_DEMO_PASSWORD",
+    "FF_OIDC_SIGNING_KEY",
+    "FF_WORKER_MODE",
+    "FF_WORKER_CONCURRENCY",
+    "FF_WORKER_PORT",
+    "FF_CONNECTOR_URL",
+    "FF_CONNECTOR_TOKEN",
+    "FF_HTTP_ALLOWLIST",
+    "FF_TRUST_PROXY",
+    "DEMO_PORT",
+    "NODE_ENV",
+    "HOST"
+  ],
+  "container_port": 8080,
+  "env_defaults": {
+    "FF_SEED_DEMO": "true",
+    "FF_DEMO_EMAIL": "demo@acme.test",
+    "FF_DEMO_PASSWORD": "demo-pass-2026"
+  },
+  "runtime_test": {
+    "enabled": true,
+    "mode": "playwright",
+    "needs": ["postgres", "redis"],
+    "command": "npx playwright test --reporter=list",
+    "timeout_s": 300,
+    "env": {
+      "FF_DATABASE_URL": "{{postgres_url}}",
+      "FF_REDIS_URL": "{{redis_url}}",
+      "FF_PORT": "{port}",
+      "FF_VAULT_KEY": "MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=",
+      "FF_SESSION_SECRET": "test-session-secret-32-bytes!!",
+      "FF_APP_URL": "http://localhost:{port}",
+      "NODE_ENV": "test"
+    },
+    "setup": [
+      "npm install",
+      "npm run build"
+    ],
+    "start": "node apps/server/dist/index.js --port {port}",
+    "start_timeout_s": 30,
+    "health_check": {
+      "url": "http://localhost:{port}/readyz",
+      "timeout_s": 30
+    }
+  },
+  "build": {
+    "command": "npm run build",
+    "timeout_s": 120
+  },
+  "install": {
+    "command": "npm install",
+    "timeout_s": 120
+  }
+}

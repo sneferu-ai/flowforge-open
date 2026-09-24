@@ -1,0 +1,60 @@
+api_version: flowforge/v1
+name: invoice-chaser
+summary: Weekday sweep for invoices 14+ days overdue, escalate >30 days
+allow_concurrent: false
+inputs:
+  - name: escalation_threshold
+    type: integer
+    default: 30
+triggers:
+  - type: schedule
+    cron: "30 9 * * 1-5"
+    timezone: UTC
+defaults:
+  retry: { attempts: 3, backoff: exponential, base_ms: 500, max_ms: 30000, jitter: true }
+  timeout_seconds: 60
+steps:
+  - id: fetch_overdue
+    type: http
+    timeout_seconds: 15
+    with:
+      method: GET
+      url: "{{ env.FF_APP_URL }}/api/v1/demo/invoices?status=overdue"
+    on_error: abort
+  - id: per_invoice
+    type: for_each
+    with:
+      over: "steps.fetch_overdue.output.body.invoices"
+      limit: 100
+    steps:
+      - id: send_reminder
+        type: notify
+        with:
+          channel: email
+          to: "{{ loop.item.client_email }}"
+          subject: "Invoice {{ loop.item.number }} — {{ loop.item.days_overdue }} days overdue"
+          body: "Hi {{ loop.item.client_name }}, a friendly nudge that invoice {{ loop.item.number }} is now {{ loop.item.days_overdue }} days overdue."
+      - id: check_escalation
+        type: condition
+        with:
+          when: "loop.item.days_overdue > inputs.escalation_threshold"
+          then:
+            - id: request_approval
+              type: manual_approval
+              with:
+                prompt: "Approve escalation email for invoice {{ loop.item.number }} ({{ loop.item.days_overdue }} days overdue)?"
+                timeout_seconds: 86400
+                on_timeout: skip
+            - id: send_escalation_email
+              type: notify
+              if: "steps.request_approval.output.decision == 'approved'"
+              with:
+                channel: email
+                to: "{{ loop.item.client_email }}"
+                subject: "URGENT: Invoice {{ loop.item.number }} — {{ loop.item.days_overdue }} days overdue"
+                body: "Hi {{ loop.item.client_name }}, this is an urgent reminder that invoice {{ loop.item.number }} is now {{ loop.item.days_overdue }} days overdue. Please contact us immediately."
+  - id: log_completion
+    type: log
+    with:
+      level: info
+      message: "Pursued {{ len(steps.per_invoice.output.results) }} invoices"

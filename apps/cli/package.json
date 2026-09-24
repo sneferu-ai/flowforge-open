@@ -1,0 +1,26 @@
+{
+  "name": "@flowforge/cli",
+  "version": "1.0.0",
+  "description": "FlowForge Open CLI — validate, deploy, and trigger workflows",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "forge": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@flowforge/shared": "*",
+    "@flowforge/engine": "*",
+    "js-yaml": "^4.1.0",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "vitest": "^2.0.0"
+  }
+}

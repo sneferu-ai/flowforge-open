@@ -1,0 +1,29 @@
+{
+  "mandatory_evidence": {
+    "automated_tests": "pass",
+    "browser": "pass",
+    "runtime": "pass"
+  },
+  "records": [
+    {
+      "phase": "automated_tests",
+      "required_for_release": true,
+      "status": "pass",
+      "test_failures": []
+    },
+    {
+      "phase": "browser",
+      "required_for_release": true,
+      "status": "pass",
+      "test_failures": []
+    },
+    {
+      "phase": "runtime",
+      "required_for_release": true,
+      "status": "pass",
+      "test_failures": []
+    }
+  ],
+  "schema": "sneferu.sod.release-evidence/v1",
+  "tested_source_tree_sha256": "9415ee4f847c30cabaf267eac4749a12b56de660ec3c551359d1f639493ec480"
+}

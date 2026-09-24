@@ -1,0 +1,51 @@
+api_version: flowforge/v1
+name: conditional-escalation
+summary: Fetch overdue invoices; escalate those over a threshold, log the rest.
+
+inputs:
+  - name: escalation_threshold
+    type: integer
+    required: true
+    default: 20
+
+triggers:
+  - type: schedule
+    cron: "0 9 * * 1-5"
+    timezone: UTC
+
+steps:
+  - id: fetch_overdue
+    type: http
+    with:
+      method: GET
+      url: "{{ env.FF_APP_URL }}/api/v1/demo/invoices?status=overdue&include_escalations=1"
+  - id: split_by_severity
+    type: for_each
+    with:
+      over: "steps.fetch_overdue.output.body.invoices"
+    steps:
+      - id: route
+        type: condition
+        with:
+          when: "loop.item.days_overdue >= inputs.escalation_threshold"
+          then:
+            - id: escalate
+              type: notify
+              with:
+                channel: email
+                to: "{{ loop.item.client_email }}"
+                subject: "URGENT: Invoice {{ loop.item.number }} — {{ loop.item.days_overdue }} days overdue"
+                body: "Your invoice {{ loop.item.number }} for {{ loop.item.amount }} {{ loop.item.currency }} is now {{ loop.item.days_overdue }} days overdue and requires immediate attention."
+          else:
+            - id: gentle_reminder
+              type: notify
+              with:
+                channel: email
+                to: "{{ loop.item.client_email }}"
+                subject: "Reminder: Invoice {{ loop.item.number }}"
+                body: "A friendly reminder that invoice {{ loop.item.number }} is {{ loop.item.days_overdue }} days overdue."
+  - id: summary
+    type: log
+    with:
+      level: info
+      message: "Processed {{ len(steps.split_by_severity.output.results) }} overdue invoices with escalation threshold {{ inputs.escalation_threshold }} days"

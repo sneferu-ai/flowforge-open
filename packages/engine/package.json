@@ -1,0 +1,32 @@
+{
+  "name": "@flowforge/engine",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@flowforge/shared": "*",
+    "zod": "^3.23.0",
+    "js-yaml": "^4.1.0",
+    "cron-parser": "^4.9.0",
+    "luxon": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/luxon": "^3.4.0",
+    "typescript": "^5.7.0"
+  }
+}

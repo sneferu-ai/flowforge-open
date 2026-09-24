@@ -1,0 +1,32 @@
+api_version: flowforge/v1
+name: order-follow-up
+summary: Webhook-triggered check for stalled orders; notify ops for each.
+
+triggers:
+  - type: webhook
+    path: order-follow-up
+    auth_mode: none
+
+steps:
+  - id: fetch_stalled
+    type: http
+    with:
+      method: GET
+      url: "{{ env.FF_APP_URL }}/api/v1/demo/orders?status=stalled"
+  - id: notify_ops
+    type: for_each
+    with:
+      over: "steps.fetch_stalled.output.body.orders"
+    steps:
+      - id: send_alert
+        type: notify
+        with:
+          channel: email
+          to: "{{ loop.item.client_email }}"
+          subject: "Order {{ loop.item.number }} stalled for {{ loop.item.stalled_hours }}h"
+          body: "Order {{ loop.item.number }} for {{ loop.item.client_name }} has been stalled for {{ loop.item.stalled_hours }} hours."
+  - id: done
+    type: log
+    with:
+      level: info
+      message: "Followed up on {{ len(steps.notify_ops.output.results) }} stalled orders"
