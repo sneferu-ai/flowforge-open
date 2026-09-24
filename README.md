@@ -1,6 +1,7 @@
+
+
+
 <div align="center">
-
-
 
 
 <div align="center">
@@ -10,6 +11,8 @@
 </div>
 
 **Workflow automation for freelancers and micro-agencies, with every workflow kept as a YAML file you own.**
+
+<a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="180px" alt="Sneferu"></a>
 
 
 FlowForge turns the chores every small agency repeats into versioned YAML workflows: chasing unpaid invoices, onboarding clients, following up on orders, asking for reviews, reminding about renewals. An engine runs them on a schedule, from a webhook or on demand, pauses for a human where one is needed, and keeps a hash-chained audit trail of everything it did. read the [product spec](flowforge-open-product-specification-specification.md)
@@ -27,9 +30,7 @@ FlowForge turns the chores every small agency repeats into versioned YAML workfl
 
 </div>
 
-designed and build by:
 
-<a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="180px" alt="Sneferu"></a>
 
 ## What it does
 
