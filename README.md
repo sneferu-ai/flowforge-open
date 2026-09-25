@@ -14,7 +14,6 @@
 
 <a href="https://sneferu.ai" class="brand" href="#top" aria-label="Sneferu home"><img src="https://github.com/user-attachments/assets/436aaac6-d48b-440d-bc58-38b14a209583" width="180px" alt="Sneferu"></a>
 
-
 FlowForge turns the chores every small agency repeats into versioned YAML workflows: chasing unpaid invoices, onboarding clients, following up on orders, asking for reviews, reminding about renewals. An engine runs them on a schedule, from a webhook or on demand, pauses for a human where one is needed, and keeps a hash-chained audit trail of everything it did. read the [product spec](flowforge-open-product-specification-specification.md)
 
 ![Node 22](https://img.shields.io/badge/node-22-339933?logo=nodedotjs&logoColor=white)
@@ -114,40 +113,8 @@ For the full walkthrough, see the product's own
 | `docs/sod-release/` | Sneferu's release record: manifest, evidence, limitations and the delivery notes |
 | `AGENTS.md` | a note left behind by the build's coding tool; not part of the product |
 
-## Status, honestly
-
-**Checked while preparing this repository (Sep 24, 2026):**
-
-- A clean install and build succeeded, and all **557 of 557** unit and integration tests passed against a real PostgreSQL 16 and Redis.
-- All **14 of 14** Playwright browser journeys passed against the app running from source.
-- The command-line demo run completed, and all five templates ran from the gallery.
-- A run paused for approval survived a server restart and finished once it was approved.
-
-**Known issues:**
-
-- **Sneferu's Docker delivery has a job-runner bug.** It isn't in this repository, but its record is in `docs/sod-release/`.
-  - Started from its exact images, it was ready in about 20 seconds and passed 13 of the 14 journeys.
-  - It runs two job runners on the same queue: the app's built-in one and a separate worker container. The worker isn't given the app's address, so runs it picks up fail with `host_not_allowed`. That happened to 2 of 3 runs in our test.
-  - Running from source, as above, uses one process and is not affected. The fix will come through Sneferu as a new release.
-- **Signing in needs HTTPS or localhost.** In production mode the session cookie is marked secure. Over plain http from another address, signing in silently lands back on the login page.
-  - Sneferu's own launch check browsed from such an address. That is where the 12 "limitations" recorded in its release come from.
-- **The editor's step diagram can leave steps out.** It reads the YAML with a simple pattern, and for Invoice Chaser it shows `fetch_overdue → log_completion` without the `per_invoice` loop between them. The run itself is unaffected.
-- **Run now can return the previous run.** Manual runs are de-duplicated in 10-second windows by workflow and inputs, not by version. If you click Run now again within 10 seconds, even after promoting a new version, you get the earlier run back.
-
 **Runtime link to Sneferu:** none. Sneferu built FlowForge, and FlowForge runs entirely on its own.
 
-## How it was made
-
-FlowForge Open was built by **Software On Demand (SOD)**, Sneferu's product line for turning a request into a running application.
-
-- **The request and the specification.** The request became a specification that rival models argued out: [`problem_statement.md`](problem_statement.md), with its design brief in [`SOUL.md`](SOUL.md). It is candid about positioning. It names n8n, Windmill, Activepieces and Zapier, claims no technical novelty, and bets only on the freelancer segment and its five templates.
-- **The build.** Sneferu's coders built against that specification until it passed. SOD then tested the result, installed it on a clean machine, and ran it in a preview where the customer tried it before accepting.
-- **The release.** The accepted release is `rel-1af5d44f6b78174ed7fa6955` (version 1, Sep 24, 2026).
-  - 220 files, each bound by a SHA-256 hash in [`RELEASE_MANIFEST.json`](docs/sod-release/RELEASE_MANIFEST.json).
-  - Release evidence of passing automated tests, browser and runtime phases in [`evidence.json`](docs/sod-release/evidence.json).
-  - Its recorded limitations in [`LIMITATIONS.json`](docs/sod-release/LIMITATIONS.json).
-
-This repository is that release's source, and every source file in it matches the release manifest's SHA-256 hash. There are only two differences. The release's original README is now [`QUICKSTART.md`](QUICKSTART.md), so this page can sit on top. And build leftovers the release carried (a test-results file and five TypeScript build caches) are not included.
 
 ## Built by Sneferu Software on Demand
 
